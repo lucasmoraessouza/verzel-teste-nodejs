@@ -60,5 +60,19 @@ const CarController = {
     }
   },
 
+  async uploadImage(req: Request, res: Response): Promise<Response> {
+    try {
+      const { id } = req.params;
+      const image = await CarModel.updateOne(
+        { _id: id },
+        { image: req.file?.filename }
+      );
+
+      return res.json({ error: false, message: "Image sent successfully!" });
+    } catch (err) {
+      throw err;
+    }
+  },
+};
 
 export default CarController;
