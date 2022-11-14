@@ -45,14 +45,12 @@ const CarController = {
       const data = req.body;
 
       const car = await CarModel.findByIdAndUpdate(id, data);
-      console.log("entrou", car);
       return res.json({
         error: false,
         message: "Car successfully updated!",
         car,
       });
     } catch (err) {
-      console.log(err);
       throw err;
     }
   },
@@ -72,7 +70,6 @@ const CarController = {
 
   async uploadImage(req: Request, res: Response): Promise<Response> {
     try {
-      console.log(req.file);
       const { id } = req.params;
       const image = await CarModel.updateOne(
         { _id: id },
@@ -81,7 +78,6 @@ const CarController = {
 
       return res.json({ error: false, message: "Image sent successfully!" });
     } catch (err) {
-      console.log(err);
       throw err;
     }
   },
