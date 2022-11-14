@@ -35,7 +35,10 @@ const AuthController = {
         expiresIn: 86400,
       });
 
-      return res.json({ user, token });
+      return res.json({
+        error: false,
+        token,
+      });
     } catch (err) {
       throw err;
     }

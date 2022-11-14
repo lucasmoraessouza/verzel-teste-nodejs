@@ -11,9 +11,10 @@ const upload = multer({ storage: storage });
 router.post("/login", AuthController.login);
 router.use("/files", express.static("uploads"));
 
+router.get("/cars", CarController.index);
+
 router.use(AuthToken);
 
-router.get("/cars", CarController.index);
 router.get("/car/:id", CarController.findById);
 router.post("/car", CarController.createCar);
 router.put("/car/:id", CarController.update);
